@@ -184,7 +184,7 @@ def run(argv=None):
     for file in find_files_recursively(args.files, conf):
         filepath = file[2:] if file.startswith('./') else file
         try:
-            with io.open(file, newline='') as f:
+            with io.open(file, newline='', encoding='utf-8') as f:
                 problems = linter.run(f, conf, filepath)
         except EnvironmentError as e:
             print(e, file=sys.stderr)
